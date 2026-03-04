@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { HeroUIProvider } from "@heroui/react";
+import { ToastProvider } from "@heroui/toast";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -34,7 +35,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <HeroUIProvider>{children}</HeroUIProvider>
+        <HeroUIProvider>
+          <ToastProvider />
+          {children}
+        </HeroUIProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
